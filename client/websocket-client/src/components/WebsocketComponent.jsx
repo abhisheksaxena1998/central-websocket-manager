@@ -56,6 +56,33 @@ const WebSocketComponent = () => {
     };
   }, []);
 
+  // Mapping of message keys to verbose descriptions
+  const messageDescriptionMap = {
+    e: "Event Type",
+    E: "Event Time (ms)",
+    s: "Symbol",
+    p: "Price Change (Last 24h)",
+    P: "Percentage Change (Last 24h)",
+    w: "Weighted Average Price (Last 24h)",
+    x: "Last Price",
+    c: "Current Price",
+    Q: "Quantity of Last Trade",
+    b: "Highest Bid Price",
+    B: "Quantity at Highest Bid",
+    a: "Lowest Ask Price",
+    A: "Quantity at Lowest Ask",
+    o: "Opening Price (Last 24h)",
+    h: "Highest Price (Last 24h)",
+    l: "Lowest Price (Last 24h)",
+    v: "Total Volume (Last 24h)",
+    q: "Total Value in USDT (Last 24h)",
+    O: "Start Time of 24h Period (ms)",
+    C: "End Time of 24h Period (ms)",
+    F: "First Trade ID (Last 24h)",
+    L: "Last Trade ID (Last 24h)",
+    n: "Number of Trades (Last 24h)",
+  };
+
   return (
     <div style={styles.container}>
       <Typography variant="h4" gutterBottom>
@@ -80,7 +107,10 @@ const WebSocketComponent = () => {
             <TableBody>
               {Object.entries(currentMessage).map(([key, value]) => (
                 <TableRow key={key}>
-                  <TableCell style={styles.tableCell}>{key}</TableCell>
+                  <TableCell style={styles.tableCell}>
+                    {messageDescriptionMap[key] || key}{" "}
+                    {/* Display the verbose description */}
+                  </TableCell>
                   <TableCell style={styles.tableCell}>
                     <Typography variant="body1" style={{ color: "#000" }}>
                       {value}
