@@ -1,0 +1,3 @@
+/venv/
+/client/node_modules
+/client/websocket-client/node_modules
